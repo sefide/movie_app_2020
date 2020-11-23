@@ -2,41 +2,23 @@ import React from "react";
 import PropTypes from "prop-types";
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        console.log("constuctor");
-    }
-
     state = {
-        count: 0
-    }
-
-    add = () => {
-        console.log("add");
-        this.setState(current => ({count: current.count + 1}));
+        isLoading: true,
+        movies: []
     };
-    minus = () => {
-        console.log("minus");
-        this.setState(current => ({count: this.state.count - 1}));
-    };
-
     componentDidMount() {
-        console.log("component did rendered");
-    }
-    componentDidUpdate() {
-        console.log("component did (just) updated");
-    }
-    componentWillUnmount() {
-        console.log("goodbye component");
+        setTimeout(() => {
+            // state 내의 값을 새롭게 추가할 수 있다.
+            this.setState({ isLoading: false, book: true});
+        }, 6000)
     }
 
     render() {
-        console.log("render");
+        const {isLoading} = this.state;
+
         return (
         <div>
-            <h1>The number is : {this.state.count}</h1>
-            <button onClick={this.add}>Add</button>
-            <button onClick={this.minus}>Minus</button>
+          {isLoading ? "Loading.." : "We are ready"}
         </div>
         );
     }
