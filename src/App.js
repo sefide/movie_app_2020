@@ -1,16 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 class App extends React.Component {
     state = {
         isLoading: true,
         movies: []
     };
+
+    getMovies = async () => {
+        const {
+            data: {
+                 data: { movies }
+                }
+            } = await axios.get("https://yts.mx/api/v2/list_movies.json");
+        console.log(movies);
+        this.setState({movies, isLoading: false});
+    }
+
     componentDidMount() {
-        setTimeout(() => {
-            // state 내의 값을 새롭게 추가할 수 있다.
-            this.setState({ isLoading: false, book: true});
-        }, 6000)
+        this.getMovies();
     }
 
     render() {
