@@ -15,7 +15,7 @@ function Movie({year, title, summary, poster, genres}) {
                 {genres.map((genre, index) => 
                     <li className="movie__genre" key={index}> {genre}</li>)}
             </ul>
-            <p className="movie__summary">{summary.slice(0, 140)}...</p>
+            <p className="movie__summary">{summary.length > 0 ? summary.slice(0, 300) : "no summary ".repeat(10)}...</p>
 
         </div>
     </div>
