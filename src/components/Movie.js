@@ -17,18 +17,22 @@ function Movie({id, year, title, summary, poster, genres}) {
                     poster,
                     genres
                 }
-            }}></Link>
+            }}>
             <img src={poster} alt={title} title={title}/>
             <div className="movies_movie">
                 <h3 className="movie__title">{title}</h3>
                 <h5 className="movie__year">{year}</h5>
                 <ul className="movie__genres"> 
                     {genres.map((genre, index) => 
-                        <li className="movie__genre" key={index}> {genre}</li>)}
+                        <li className="movie__genre" key={index}> 
+                            {genre}
+                        </li>
+                        )}
                 </ul>
                 <p className="movie__summary">{summary.length > 0 ? summary.slice(0, 300) : "no summary ".repeat(10)}...</p>
 
             </div>
+            </Link>
         </div>
     
     );
